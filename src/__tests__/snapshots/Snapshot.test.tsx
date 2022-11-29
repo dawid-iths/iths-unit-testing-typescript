@@ -4,10 +4,10 @@ import { MemoryRouter } from 'react-router-dom';
 
 test('SnapShot test', () => {
 
-    //arrange
-    const path = "/snapshot";
+  //arrange
+  const path = "/snapshot";
 
-    //act
+  //act
   const tree = renderer
     .create( 
         <MemoryRouter initialEntries={[path]}>
@@ -17,5 +17,5 @@ test('SnapShot test', () => {
 
     //assert
     expect(tree).toMatchSnapshot();
-});
 
+});

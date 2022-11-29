@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Counter from './pages/Counter';
 import SnapShot from './pages/SnapShot';
+import StyleTest from './pages/StyleTest';
 
 function App() {
   return (
@@ -13,8 +14,10 @@ function App() {
       <header className="App-header">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/counter" element={<Counter />} />
+          <Route path="/about" element={<About />} />
           <Route path="/snapshot" element={<SnapShot />} />
+          <Route path="/counter" element={<Counter />} />
+          <Route path="/styletest" element={<StyleTest />} />
         </Routes>
       </header>
     </div>

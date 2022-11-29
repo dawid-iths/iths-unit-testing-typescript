@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import DecremenButton from "./DecrementButton";
 import IncrementButton from "./IncrementButton";
 
-const Counter = () => {
+const CounterComponent = () => {
     const [counter, setCounter] = useState(0);
 
     const incrementCounter = () => {
@@ -18,15 +19,16 @@ const Counter = () => {
         incrementCounter={incrementCounter}
         btnText="+"
         />
-    {/* <button data-testid="increment" onClick={incrementCounter}>
-    +
-    </button> */}
-    <p data-testid="counter">{counter}</p>
-    <button disabled data-testid="decrement" onClick={decrementCounter}>
-    -
-    </button>
+        
+        <p data-testid="counter">{counter}</p>
+
+        <DecremenButton
+        decrementCounter={decrementCounter}
+        btnText="-"
+        />
+
     </>
     );
 };
 
-export default Counter;
+export default CounterComponent;

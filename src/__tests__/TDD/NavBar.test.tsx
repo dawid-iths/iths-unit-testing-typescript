@@ -1,9 +1,7 @@
-import React from 'react'; 
 import { render, screen } from '@testing-library/react'; 
 import NavMenu from '../../components/NavBar/NavMenu';
-import { MenuLinks, NavBarLinksProps } from '../../components/NavBar/MenuLinks';
+import {  NavBarLinksProps } from '../../components/NavBar/MenuLinks';
 import { MemoryRouter } from 'react-router-dom';
-import App from '../../App';
 import * as FaIcons from 'react-icons/fa' 
 
 describe('NavBar tests', () => {
@@ -44,9 +42,11 @@ describe('NavBar tests', () => {
     test('menu links contains correct values', () => {
         //arrange
         const MenuLinks : NavBarLinksProps[] = [
-            { title: 'Home',path: '/',icon: <FaIcons.FaHome /> },
+            { title: 'Home', path: '/',icon: <FaIcons.FaHome /> },
             { title: 'About', path: '/About', icon: <FaIcons.FaBook /> },
-            { title: 'Counter',path: '/Counter',icon: <FaIcons.FaTasks /> }
+            { title: 'Counter', path: '/Counter',icon: <FaIcons.FaTasks /> },
+            { title: 'Snapshot', path: '/snapshot',icon: <FaIcons.FaCamera /> },
+            { title: 'Style', path: '/styletest',icon: <FaIcons.FaPen /> }
         ]
         //act
 

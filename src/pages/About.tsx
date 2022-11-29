@@ -11,7 +11,7 @@ const About = () => {
 
   return (
     <div style={divStyle}>
-      /* add implementation */
+      <h1>This is what it's all about</h1>
     </div>
   );
 };

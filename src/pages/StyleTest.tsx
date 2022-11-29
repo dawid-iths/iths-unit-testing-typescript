@@ -7,7 +7,7 @@ import styled from 'styled-components';
   color: palevioletred;
 `;
 
-const Wrapper = styled.section`
+export const Wrapper = styled.section`
   padding: 4em;
   background: papayawhip;
 `;

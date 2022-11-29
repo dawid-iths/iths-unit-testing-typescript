@@ -1,10 +1,10 @@
 import React from 'react';
-import styled from 'styled-components';
+import CounterComponent from '../components/Counter/CounterComponent';
 
-const Counter: React.FC = () => {
-  return (
+const Counter = () => {
+ return (
     <>
-    <Counter></Counter>
+    <CounterComponent></CounterComponent>
     </>
   );
 };
