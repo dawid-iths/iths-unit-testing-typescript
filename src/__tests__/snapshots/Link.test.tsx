@@ -1,8 +1,8 @@
 import App from '../../App';
 import renderer from 'react-test-renderer'
-import Link from '../../components/Link';
+import Link from '../../components/Links/Link';
 
-it('changes the class when hovered', () => {
+it('<link /> the class when hovered', () => {
   const component : any = renderer.create(
     <Link page="http://www.ithsdistans.se">iths distans</Link>,
   );
