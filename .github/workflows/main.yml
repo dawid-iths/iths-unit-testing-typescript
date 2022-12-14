@@ -33,4 +33,5 @@ jobs:
 
       - name: run Storybook tests 
         run: |
-          npm run test-storybook
+          npm storybook:ci
+          npm test-storybook:ci
