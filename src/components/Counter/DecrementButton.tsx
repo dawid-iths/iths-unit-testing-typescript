@@ -7,11 +7,11 @@ interface DecrementButtonProps {
 
 const DecremenButton: React.FC<DecrementButtonProps> = (props) => {
     return (
-    <>
-    <button data-testid="decrement" onClick={props.decrementCounter}>
-        {props.btnText}
-    </button>
-    </>
+        <>
+            <button data-testid="decrement" onClick={props.decrementCounter}>
+                {props.btnText}
+            </button>
+        </>
     );
 };
 
