@@ -9,7 +9,7 @@ describe('Trivia Question component End-2-End tests', () => {
 
         //arrange
         const expectedText = /Question/i;
-        const props: TriviaRequestProps = { limit: 1 };
+        let props: TriviaRequestProps = { limit: 1 };
 
         //act
         render(<TriviaQuestion {...props} />);
@@ -21,7 +21,7 @@ describe('Trivia Question component End-2-End tests', () => {
     it('Check that api fetches the correct amount of records', async () => {
 
         //arrange   
-        const props: TriviaRequestProps = { limit: 1 };
+        let props: TriviaRequestProps = { limit: 1 };
 
         //act
         var result = await GetTriviaQuestions(props);
@@ -31,6 +31,7 @@ describe('Trivia Question component End-2-End tests', () => {
     });
 
     test('Mocking Trivia API', async () => {
+
         //arrange   
         const fakeResponse = [{
             "category": "Entertainment: Video Games", "id": "1", "correctAnswer": "Mario",
@@ -40,21 +41,19 @@ describe('Trivia Question component End-2-End tests', () => {
             "type": "multiple", "difficulty": "easy", "isNiche": false
         }];
 
-        const limit = 1;
+        let props: TriviaRequestProps = { limit: 1 };
 
-        const mockTrivia = await jest.fn()
-            .mockResolvedValue(Promise.resolve(fakeResponse))
-            .mockImplementation(async () => await GetTriviaQuestions({ limit: limit }));
+        global.fetch = jest.fn(() => Promise.resolve({
+            json: () => Promise.resolve(fakeResponse)
+        })) as jest.Mock;
 
         //act
-        await mockTrivia();
+        const result = await GetTriviaQuestions(props);
 
         //assert
-        expect(mockTrivia).toBeCalled();
-        expect(mockTrivia.mock.calls.length).toBe(limit);
-        // expect(mockTrivia.mock.results).toBe(fakeResponse); //TODO
+        expect(result.length).toBe(props.limit);
+        expect(result).toEqual(fakeResponse);
 
-        mockTrivia.mockRestore();
     });
 })
 

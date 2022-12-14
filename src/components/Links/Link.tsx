@@ -1,18 +1,18 @@
-import {useState} from 'react';
+import { useState } from 'react';
 import "./Link.css";
 
-enum STATUS  {
+enum STATUS {
   HOVERED = 'HoveredLink',
   DEFAULT = 'DefaultLink',
 };
 
 export interface LinkProps {
-    page: string;
-    children: React.ReactNode;
+  page: string;
+  children: React.ReactNode;
 }
 
 
-const Link : React.FC<LinkProps> = (props) => {
+const Link: React.FC<LinkProps> = (props) => {
   const [status, setStatus] = useState(STATUS.DEFAULT);
 
   const onMouseEnter = () => {
