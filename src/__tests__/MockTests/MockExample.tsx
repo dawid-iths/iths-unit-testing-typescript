@@ -1,26 +1,36 @@
-import { render, screen, waitFor, within } from '@testing-library/react';
+import { TriviaRequestProps } from '../../components/Trivia/TriviaQuestion';
+import GetTriviaQuestions from "../../repository/TriviaRepository";
 
-export const assetsFetchMock = () => Promise.resolve({
-    ok: true,
-    status: 200,
-    json: async () => { }
-} as Response);
+describe('Trivia Question component Mock tests', () => {
 
-describe("Testing the Assets Service", () => {
+    test('Mocking Trivia API', async () => {
 
-    let fetchMock: any = undefined;
+        //arrange   
+        const fakeResponse = [{
+            "category": "Entertainment: Video Games",
+            "id": "1",
+            "correctAnswer": "Mario",
+            "incorrectAnswers": ["Luigi", "Peach", "Bowser"],
+            "question": "Who is the main character of the Super Mario series?",
+            "tags": ["mario", "nintendo", "plumber", "super mario"],
+            "type": "multiple", "difficulty": "easy", "isNiche": false
+        }];
 
-    beforeEach(() => {
-        fetchMock = jest.spyOn(global, "fetch").mockImplementation(assetsFetchMock);
+        let props: TriviaRequestProps = { limit: 1 };
+
+        global.fetch = jest.fn(() => Promise.resolve({
+            json: () => Promise.resolve(fakeResponse)
+        })) as jest.Mock;
+
+        //act
+        const result = await GetTriviaQuestions(props);
+
+        //assert
+        expect(result.length).toBe(props.limit);
+
+        expect(result).toEqual(fakeResponse);
+
     });
+})
 
-    afterEach(() => {
-        jest.restoreAllMocks();
-    });
 
-    test('Fetch has been called', () => {
-        const baseUrl = "https://myurl.com"
-        // expect(fetchMock).toHaveBeenCalled();
-        // expect(fetchMock).toHaveBeenCalledWith(baseUrl);
-    });
-});
